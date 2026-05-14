@@ -1,7 +1,726 @@
 <!DOCTYPE html>
-<html>
-<head><title>ハシバミの根</title></head>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハシバミの根 | Graphic Design</title>
+<meta name="description" content="グラフィックデザイナー山田明日香のポートフォリオ。DTP・ブランディング・パッケージ・エディトリアルデザインなど。">
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #006c92;
+  --black: #111111;
+  --gray-dark: #444444;
+  --gray-mid: #888888;
+  --gray-light: #cccccc;
+  --bg: #ffffff;
+  --meta-bg: #f0f0f0;
+  --border: #e5e5e5;
+  --font-main: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== Header ===== */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+}
+
+.logo a {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+}
+
+.logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* ロゴ画像がない場合のテキストフォールバック */
+.logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--black);
+  display: none; /* 画像ロゴに差し替え後は不要 */
+}
+.logo-text span { color: var(--accent); }
+.logo-sub {
+  font-size: 7px;
+  letter-spacing: .3em;
+  color: var(--black);
+}
+
+/* PC Nav */
+.pc-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-work {
+  position: relative;
+}
+
+.nav-work-label {
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--gray-dark);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color .2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-work-label::after {
+  content: '▾';
+  font-size: 9px;
+}
+
+.nav-work:hover .nav-work-label { color: var(--accent); }
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  min-width: 180px;
+  padding: 8px 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0);
+  transition: opacity .2s;
+}
+
+/* ラベルとドロップダウンの間の透明ブリッジ（マウスが抜けても消えない） */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.nav-work:hover .nav-dropdown {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-dropdown a {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--gray-dark);
+  padding: 7px 18px;
+  transition: color .15s, background .15s;
+}
+
+.nav-dropdown a:hover {
+  color: var(--accent);
+  background: var(--meta-bg);
+}
+
+.nav-divider {
+  color: var(--gray-light);
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+.pc-nav > a {
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--gray-dark);
+  padding: 8px 12px;
+  transition: color .2s;
+}
+.pc-nav > a:hover { color: var(--accent); }
+
+/* Hamburger */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.hamburger-btn span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--black);
+  transition: transform .3s, opacity .3s;
+}
+
+/* SP Menu */
+.sp-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0; bottom: 0;
+  background: var(--bg);
+  z-index: 99;
+  overflow-y: auto;
+  padding: 16px 28px 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+
+.sp-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.sp-menu-cat {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--black);
+  padding: 14px 0 8px;
+}
+
+.sp-menu-sub {
+  padding: 2px 0 12px 6px;
+}
+
+.sp-menu-sub a {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--gray-dark);
+  padding: 6px 0;
+  transition: color .15s;
+}
+
+.sp-menu-sub a:hover { color: var(--accent); }
+
+.sp-menu-link {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--black);
+  padding: 14px 0;
+}
+
+/* ===== Main ===== */
+main { padding-top: 64px; }
+
+/* ===== Works Grid (TOP) ===== */
+#works {
+  padding: 64px 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--gray-mid);
+  margin-bottom: 32px;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.work-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--meta-bg);
+  aspect-ratio: 1;
+}
+
+.work-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease, opacity .4s ease;
+}
+
+/* 画像がない場合のプレースホルダー */
+.work-card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--meta-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex;
+  align-items: flex-end;
+  transition: background .3s;
+}
+
+.work-card:hover .work-card-overlay {
+  background: rgba(0, 108, 146, 0.75);
+}
+
+.work-card:hover .work-card-img {
+  transform: scale(1.04);
+}
+
+.work-card-label {
+  padding: 16px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .3s, transform .3s;
+}
+
+.work-card:hover .work-card-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-card-label-en {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.work-card-label-ja {
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.8);
+  margin-top: 2px;
+}
+
+/* ===== About ===== */
+#about {
+  border-top: 1px solid var(--border);
+  padding: 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--gray-mid);
+  padding-top: 4px;
+}
+
+.about-body {}
+
+.about-name {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+
+.about-name-en {
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--gray-mid);
+  margin-bottom: 24px;
+}
+
+.about-text {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--gray-dark);
+  margin-bottom: 24px;
+}
+
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-skill-tag {
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 10px;
+}
+
+/* ===== Contact ===== */
+#contact {
+  background: var(--meta-bg);
+  padding: 64px 48px;
+  text-align: center;
+}
+
+.contact-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--gray-mid);
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 14px;
+  color: var(--gray-dark);
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.contact-btn {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: #fff;
+  background: var(--accent);
+  padding: 14px 36px;
+  transition: background .2s, transform .2s;
+}
+
+.contact-btn:hover {
+  background: #005778;
+  transform: translateY(-1px);
+}
+
+/* ===== Footer ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--gray-mid);
+}
+
+.footer-copy {
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--gray-mid);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #header { padding: 0 20px; height: 56px; }
+  .pc-nav { display: none; }
+  .hamburger-btn { display: flex; }
+  .sp-menu { display: block; top: 56px; }
+  main { padding-top: 56px; }
+
+  #works { padding: 40px 20px 60px; }
+  .works-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+
+  #about {
+    padding: 48px 20px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  #contact { padding: 48px 20px; }
+
+  footer {
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
 <body>
-<p>coming soon</p>
+
+<!-- ===== Header ===== -->
+<header id="header">
+  <div class="logo">
+    <a href="index.html">
+      <!--
+        ロゴ画像に差し替える場合はこのimgタグを使ってください。
+        例: <img src="images/logo.png" alt="ハシバミの根" class="logo-img">
+        差し替えるまでの間はテキストロゴが表示されます。
+      -->
+      <div class="logo-text">ハシバミ<span>◆</span>の根</div>
+      <div class="logo-sub">HASHIBAMINONE</div>
+    </a>
+  </div>
+
+  <!-- PC ナビ -->
+  <nav class="pc-nav">
+    <div class="nav-work">
+      <div class="nav-work-label">Work</div>
+      <div class="nav-dropdown">
+        <a href="promo.html">Promo &amp; Campaign</a>
+        <a href="branding.html">Branding &amp; VI</a>
+        <a href="packaging.html">Packaging &amp; Promo</a>
+        <a href="game.html">Game &amp; Entertainment</a>
+        <a href="editorial.html">Editorial Design</a>
+        <a href="illustration.html">Illustration</a>
+        <a href="education.html">Education</a>
+        <a href="past.html">Past Works</a>
+        <a href="self.html">Self-Initiated Works</a>
+      </div>
+    </div>
+    <span class="nav-divider">|</span>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ハンバーガー -->
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- SP メニュー -->
+<nav class="sp-menu" id="spMenu">
+  <div class="sp-menu-cat">Work</div>
+  <div class="sp-menu-sub">
+    <a href="promo.html">Promo &amp; Campaign</a>
+    <a href="branding.html">Branding &amp; VI</a>
+    <a href="packaging.html">Packaging &amp; Promo</a>
+    <a href="game.html">Game &amp; Entertainment</a>
+    <a href="editorial.html">Editorial Design</a>
+    <a href="illustration.html">Illustration</a>
+    <a href="education.html">Education</a>
+    <a href="past.html">Past Works</a>
+    <a href="self.html">Self-Initiated Works</a>
+  </div>
+  <a href="#about" class="sp-menu-link">About</a>
+  <a href="#contact" class="sp-menu-link">Contact</a>
+</nav>
+
+<!-- ===== Main ===== -->
+<main>
+
+  <!-- Works -->
+  <section id="works">
+    <p class="section-label">WORKS</p>
+    <div class="works-grid">
+
+      <!-- 各カードの差し替え方法:
+           img src に画像パスを入れるだけでOKです。
+           例: <img src="images/promo_thumb.jpg" alt="Promo & Campaign" class="work-card-img">
+      -->
+
+      <a href="promo.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/promo_thumb.jpg" alt="Promo & Campaign" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Promo &amp; Campaign</div>
+            <div class="work-card-label-ja">販促・キャンペーンビジュアル</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="branding.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/branding_thumb.jpg" alt="Branding & VI" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Branding &amp; VI</div>
+            <div class="work-card-label-ja">ブランディング・VI</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="packaging.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/packaging_thumb.jpg" alt="Packaging & Promo" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Packaging &amp; Promo</div>
+            <div class="work-card-label-ja">パッケージ・商品プロモーション</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="game.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/game_thumb.jpg" alt="Game & Entertainment" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Game &amp; Entertainment</div>
+            <div class="work-card-label-ja">ゲーム・エンタメ系バナー／ビジュアル</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="editorial.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/editorial_thumb.jpg" alt="Editorial Design" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Editorial Design</div>
+            <div class="work-card-label-ja">書籍・冊子・広報物</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="illustration.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/illustration_thumb.jpg" alt="Illustration" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Illustration</div>
+            <div class="work-card-label-ja">商用イラストレーション</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="education.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/education_thumb.jpg" alt="Education" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Education</div>
+            <div class="work-card-label-ja">デザイン教育・短大講師</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="past.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/past_thumb.jpg" alt="Past Works" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Past Works</div>
+            <div class="work-card-label-ja">その他・在職時の商業案件</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="self.html" class="work-card">
+        <div class="work-card-placeholder">
+          <!-- <img src="images/self_thumb.jpg" alt="Self-Initiated Works" class="work-card-img"> -->
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-card-label">
+            <div class="work-card-label-en">Self-Initiated Works</div>
+            <div class="work-card-label-ja">自主制作・Bow by hashibaminone</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-label">ABOUT</div>
+    <div class="about-body">
+      <div class="about-name">山田 明日香</div>
+      <div class="about-name-en">ASUKA YAMADA</div>
+      <p class="about-text">
+        フリーランスのグラフィックデザイナー。<br>
+        DTPを中心に、ブランディング・パッケージ・エディトリアルデザインなど幅広く手がけています。<br>
+        <!-- ここに自己紹介文を追加してください -->
+      </p>
+      <div class="about-skills">
+        <span class="about-skill-tag">DTP</span>
+        <span class="about-skill-tag">Branding</span>
+        <span class="about-skill-tag">Packaging</span>
+        <span class="about-skill-tag">Editorial</span>
+        <span class="about-skill-tag">Illustration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <p class="contact-label">CONTACT</p>
+    <p class="contact-text">
+      お仕事のご依頼・ご相談はメールにてお気軽にどうぞ。
+    </p>
+    <!-- メールアドレスを差し替えてください -->
+    <a href="mailto:info@hashibaminone.com" class="contact-btn">info@hashibaminone.com</a>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">HASHIBAMINONE</div>
+  <div class="footer-copy">&copy; Asuka Yamada. All rights reserved.</div>
+</footer>
+
+<script>
+// ハンバーガーメニュー
+const btn = document.getElementById('hamburgerBtn');
+const menu = document.getElementById('spMenu');
+let isOpen = false;
+
+btn.addEventListener('click', () => {
+  isOpen = !isOpen;
+  menu.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+});
+
+// SPメニュー内リンクをクリックしたら閉じる
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    isOpen = false;
+    menu.classList.remove('open');
+  });
+});
+</script>
+
 </body>
 </html>
