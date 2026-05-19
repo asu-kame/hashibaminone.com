@@ -330,22 +330,26 @@ main { padding-top: 64px; }
 #about {
   border-top: 1px solid var(--border);
   padding: 80px 48px;
-  max-width: 1200px;
+}
+
+.about-body {
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: start;
 }
+
+.about-body-left {}
+.about-body-right {}
 
 .about-label {
   font-size: 10px;
   letter-spacing: .2em;
   color: var(--gray-mid);
-  padding-top: 4px;
+  margin-bottom: 20px;
 }
-
-.about-body {}
 
 .about-name {
   font-size: 22px;
@@ -479,10 +483,11 @@ footer {
   #works { padding: 40px 20px 60px; }
   .works-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
 
-  #about {
-    padding: 48px 20px;
+  #about { padding: 48px 20px; }
+
+  .about-body {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 24px;
   }
 
   #contact { padding: 48px 20px; }
@@ -681,39 +686,42 @@ footer {
 
   <!-- About -->
   <section id="about">
-    <div class="about-label">ABOUT</div>
     <div class="about-body">
-      <div class="about-name">山田 明日香</div>
-      <div class="about-name-en">ASUKA YAMADA</div>
-      <p class="about-text">
-        フリーランスのグラフィックデザイナー。<br>
-        印刷物のデザインを中心に、幅広く手がけています。
-      </p>
-      <div class="about-history">
-        <div class="about-history-item">
-          <span class="about-history-year">2010年</span>
-          <span class="about-history-desc">大阪芸術大学コミュニケーションデザインコース卒業</span>
-        </div>
-        <div class="about-history-item">
-          <span class="about-history-year"></span>
-          <span class="about-history-desc">卒業後、制作会社など数社を経験</span>
-        </div>
-        <div class="about-history-item">
-          <span class="about-history-year">2018年</span>
-          <span class="about-history-desc">フリーランスとして独立</span>
-        </div>
-        <div class="about-history-item">
-          <span class="about-history-year">2022年</span>
-          <span class="about-history-desc">大阪芸術大学短期大学部デザイン・美術学科 非常勤講師に就任</span>
-        </div>
+      <div class="about-body-left">
+        <div class="about-label">ABOUT</div>
+        <div class="about-name">山田 明日香</div>
+        <div class="about-name-en">ASUKA YAMADA</div>
+        <p class="about-text">
+          フリーランスのグラフィックデザイナー。<br>
+          印刷物のデザインを中心に、幅広く手がけています。
+        </p>
       </div>
-      <div class="about-skills">
-        <span class="about-skill-tag">DTP</span>
-        <span class="about-skill-tag">Branding</span>
-        <span class="about-skill-tag">Packaging</span>
-        <span class="about-skill-tag">Editorial</span>
-        <span class="about-skill-tag">Illustration</span>
-        <span class="about-skill-tag">Web &amp; Digital</span>
+      <div class="about-body-right">
+        <div class="about-history">
+          <div class="about-history-item">
+            <span class="about-history-year">2010年</span>
+            <span class="about-history-desc">大阪芸術大学コミュニケーションデザインコース卒業</span>
+          </div>
+          <div class="about-history-item">
+            <span class="about-history-year"></span>
+            <span class="about-history-desc">卒業後、制作会社など数社を経験</span>
+          </div>
+          <div class="about-history-item">
+            <span class="about-history-year">2018年</span>
+            <span class="about-history-desc">フリーランスとして独立</span>
+          </div>
+          <div class="about-history-item">
+            <span class="about-history-year">2022年</span>
+            <span class="about-history-desc">大阪芸術大学短期大学部デザイン・美術学科 非常勤講師に就任</span>
+          </div>
+        </div>
+        <div class="about-skills">
+          <span class="about-skill-tag">DTP</span>
+          <span class="about-skill-tag">Branding</span>
+          <span class="about-skill-tag">Editorial</span>
+          <span class="about-skill-tag">Illustration</span>
+          <span class="about-skill-tag">Web &amp; Digital</span>
+        </div>
       </div>
     </div>
   </section>
