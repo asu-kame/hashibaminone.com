@@ -57,7 +57,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .logo-img {
-  height: 28px;
+  height: 36px;
   width: auto;
   display: block;
 }
@@ -382,6 +382,29 @@ main { padding-top: 64px; }
   padding: 4px 10px;
 }
 
+.about-history {
+  background: var(--meta-bg);
+  padding: 16px 20px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+
+.about-history-item {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--gray-dark);
+  letter-spacing: .03em;
+}
+
+.about-history-year {
+  min-width: 48px;
+  color: var(--gray-mid);
+  font-size: 11px;
+}
+
 /* ===== Contact ===== */
 #contact {
   background: var(--meta-bg);
@@ -483,13 +506,7 @@ footer {
 <header id="header">
   <div class="logo">
     <a href="index.html">
-      <!--
-        ロゴ画像に差し替える場合はこのimgタグを使ってください。
-        例: <img src="images/logo.png" alt="ハシバミの根" class="logo-img">
-        差し替えるまでの間はテキストロゴが表示されます。
-      -->
-      <div class="logo-text">ハシバミ<span>◆</span>の根</div>
-      <div class="logo-sub">HASHIBAMINONE</div>
+      <img src="images/logo.svg" alt="ハシバミの根" class="logo-img">
     </a>
   </div>
 
@@ -670,15 +687,33 @@ footer {
       <div class="about-name-en">ASUKA YAMADA</div>
       <p class="about-text">
         フリーランスのグラフィックデザイナー。<br>
-        DTPを中心に、ブランディング・パッケージ・エディトリアルデザインなど幅広く手がけています。<br>
-        <!-- ここに自己紹介文を追加してください -->
+        印刷物のデザインを中心に、幅広く手がけています。
       </p>
+      <div class="about-history">
+        <div class="about-history-item">
+          <span class="about-history-year">2010年</span>
+          <span class="about-history-desc">大阪芸術大学コミュニケーションデザインコース卒業</span>
+        </div>
+        <div class="about-history-item">
+          <span class="about-history-year"></span>
+          <span class="about-history-desc">卒業後、制作会社など数社を経験</span>
+        </div>
+        <div class="about-history-item">
+          <span class="about-history-year">2018年</span>
+          <span class="about-history-desc">フリーランスとして独立</span>
+        </div>
+        <div class="about-history-item">
+          <span class="about-history-year">2022年</span>
+          <span class="about-history-desc">大阪芸術大学短期大学部デザイン・美術学科 非常勤講師に就任</span>
+        </div>
+      </div>
       <div class="about-skills">
         <span class="about-skill-tag">DTP</span>
         <span class="about-skill-tag">Branding</span>
         <span class="about-skill-tag">Packaging</span>
         <span class="about-skill-tag">Editorial</span>
         <span class="about-skill-tag">Illustration</span>
+        <span class="about-skill-tag">Web &amp; Digital</span>
       </div>
     </div>
   </section>
