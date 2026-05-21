@@ -194,12 +194,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   padding: 16px 28px 40px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s;
+  visibility: hidden;
+  transition: opacity .25s, visibility .25s;
 }
 
 .sp-menu.open {
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
 }
 
 .sp-menu-cat {
@@ -565,7 +567,6 @@ footer {
 
   <!-- Works -->
   <section id="works">
-    <p class="section-label">WORKS</p>
     <div class="works-grid">
 
       <!-- 各カードの差し替え方法:
@@ -728,7 +729,6 @@ footer {
 
   <!-- Contact -->
   <section id="contact">
-    <p class="contact-label">CONTACT</p>
     <p class="contact-text">
       お仕事のご依頼・ご相談はメールにてお気軽にどうぞ。
     </p>
