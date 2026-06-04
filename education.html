@@ -26,6 +26,7 @@ img { display: block; max-width: 100%; height: auto; }
 
 #header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; }
 .logo a { display: flex; flex-direction: column; line-height: 1; gap: 3px; }
+.logo-img { height: 36px; width: auto; display: block; }
 .logo-text { font-size: 20px; font-weight: 600; letter-spacing: .02em; color: var(--black); }
 .logo-text span { color: var(--accent); }
 .logo-sub { font-size: 7px; letter-spacing: .3em; color: var(--black); }
@@ -70,8 +71,8 @@ main { padding-top: 64px; }
 .slider-track-outer { overflow: hidden; }
 .slider-track { display: flex; transition: transform .35s ease; }
 .slide { min-width: 100%; display: flex; flex-direction: column; align-items: flex-start; }
-.slide img { max-height: 560px; width: auto; max-width: 100%; object-fit: contain; background: var(--meta-bg); }
-.slide-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--meta-bg); display: flex; align-items: center; justify-content: center; }
+.slide img { width: 100%; height: 500px; object-fit: contain; background: #fff; }
+.slide-placeholder { width: 100%; height: 500px; background: #fff; display: flex; align-items: center; justify-content: center; }
 .slide-placeholder span { font-size: 12px; color: var(--gray-mid); letter-spacing: .06em; }
 .slide-caption { font-size: 10px; letter-spacing: .06em; color: var(--gray-mid); margin-top: 8px; }
 .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: var(--bg); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color .2s; z-index: 2; }
@@ -117,8 +118,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex;
 .edu-course-meta { background: var(--meta-bg); padding: 10px 14px; border-radius: 2px; display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; max-width: 720px; }
 .edu-course-meta span { font-size: 10px; color: var(--gray-dark); letter-spacing: .04em; }
 .edu-course-desc { font-size: 13px; line-height: 2; color: var(--gray-dark); max-width: 720px; margin-bottom: 16px; }
-.edu-materials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 720px; }
-.edu-material-card { background: var(--meta-bg); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--gray-mid); }
+.edu-materials { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 720px; }
+.edu-material-card { background: var(--meta-bg); aspect-ratio: 5/7; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--gray-mid); }
 .edu-material-card img { width: 100%; height: 100%; object-fit: cover; }
 .edu-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .edu-tag { font-size: 10px; letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); padding: 3px 10px; }
@@ -130,8 +131,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex;
 <header id="header">
   <div class="logo">
     <a href="index.html">
-      <div class="logo-text">ハシバミ<span>◆</span>の根</div>
-      <div class="logo-sub">HASHIBAMINONE</div>
+      <img src="images/logo.svg" alt="ハシバミの根" class="logo-img">
     </a>
   </div>
   <nav class="pc-nav">
@@ -182,54 +182,73 @@ footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex;
   <div class="works-list">
     <div class="work-item" style="border:none;">
       <p class="edu-intro">
-        専門学校・短大にてグラフィックデザインの実習授業を担当しています。<br>
-        IllustratorやPhotoshopをはじめとしたAdobe CCの操作から、DTPの基礎、デザイン思考まで幅広く指導しています。
+        大阪芸術大学短期大学部にてグラフィックデザインの非常勤講師として実習・演習の授業を担当。<br>
+        IllustratorやPhotoshopをはじめとしたAdobe CCの操作から、DTPの基礎、デザイン思考などを指導しています。
       </p>
 
       <div class="edu-section">
         <div class="edu-section-title">COURSES</div>
 
         <div class="edu-course">
-          <div class="edu-course-name">コンピューター基礎実習（Illustrator）</div>
+          <div class="edu-course-name">Mac・Adobe Illustrator & Photoshop 基礎実習</div>
           <div class="edu-course-meta">
-            <span>担当科目 : グラフィックデザイン実習</span>
-            <span>使用ソフト : Adobe Illustrator</span>
+            <span>使用ソフト : Adobe Illustrator | Adobe Photoshop 他</span>
           </div>
           <p class="edu-course-desc">
-            Illustratorの基本操作から始まり、パスの描き方・整列・グループ化・ペンツールなどを段階的に習得。
-            実際の制作現場で使う操作を意識した実践的な内容で指導しています。
+            Macの電源の付け方から始まり、基礎操作、Adobe Illustrator と Adobe Photoshop の操作の授業。<br>
+            Adobe Illustratorを使用した入稿データの作り方までを習得。
           </p>
           <div class="edu-materials">
             <div class="edu-material-card">
-              <!-- <img src="images/edu_material_01.jpg" alt="教材サンプル"> -->
-              <span>教材サンプル</span>
+              <img src="images/konkiso_01.webp" alt="教材サンプル">
             </div>
-            <div class="edu-material-card"><span>教材サンプル</span></div>
-            <div class="edu-material-card"><span>教材サンプル</span></div>
+            <div class="edu-material-card">
+              <img src="images/konkiso_02.webp" alt="教材サンプル">
+            </div>
+            <div class="edu-material-card">
+              <img src="images/konkiso_03.webp" alt="教材サンプル">
+            </div>
+            <div class="edu-material-card">
+              <img src="images/konkiso_04.webp" alt="教材サンプル">
+            </div>
           </div>
           <div class="edu-tags">
+            <span class="edu-tag">Mac</span>
             <span class="edu-tag">Illustrator</span>
-            <span class="edu-tag">ペンツール</span>
-            <span class="edu-tag">パス操作</span>
-            <span class="edu-tag">整列・グループ化</span>
+            <span class="edu-tag">Photoshop</span>
           </div>
         </div>
 
         <div class="edu-course">
-          <div class="edu-course-name">DTPデザイン実習</div>
+          <div class="edu-course-name">タイポグラフィ&パッケージデザイン</div>
           <div class="edu-course-meta">
-            <span>担当科目 : DTPデザイン</span>
-            <span>使用ソフト : Adobe Illustrator / InDesign</span>
+            <span>使用ソフト : Adobe Illustrator | Adobe Photoshop 他</span>
           </div>
           <p class="edu-course-desc">
-            チラシ・冊子・ポスターなどの印刷物制作を通じて、DTPの基本的な考え方や印刷入稿の知識を習得。
-            デザインの意図をきちんと言語化する力も合わせて育てています。
+            ターゲット設定・コンセプト立案・売り場リサーチから始まり、
+            ネーミング・ロゴ・パッケージデザイン・モックアップ・商品撮影・プレゼンテーションまでを一貫して行う実践的な授業です。<br>
+            デザインを初めて学ぶ学生が多く、思考するプロセスを重視しています。
           </p>
           <div class="edu-tags">
-            <span class="edu-tag">DTP</span>
-            <span class="edu-tag">InDesign</span>
-            <span class="edu-tag">印刷入稿</span>
-            <span class="edu-tag">レイアウト</span>
+            <span class="edu-tag">ロゴマークデザイン</span>
+            <span class="edu-tag">プレゼンテーション</span>
+            <span class="edu-tag">商品企画</span>
+            <span class="edu-tag">モックアップ制作</span>
+          </div>
+        </div>
+        
+        <div class="edu-course">
+          <div class="edu-course-name">ポートフォリオ作成講座</div>
+          <div class="edu-course-meta">
+            <span>使用ソフト : Adobe Illustrator | Adobe Photoshop 他</span>
+          </div>
+          <p class="edu-course-desc">
+            主に就職・進学に向けたポートフォリオの作成講座です。
+            ポートフォリオの意味や、意識すべきポイントの指導。提出先の企業や学校を意識したブラッシュアップのアドバイスを行います。
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag">ポートフォリオ</span>
+            <span class="edu-tag">進路指導</span>
           </div>
         </div>
       </div>
@@ -259,7 +278,7 @@ document.querySelectorAll('[data-slider]').forEach(slider => {
   outer.appendChild(nextBtn);
   const track = slider.querySelector('.slider-track');
   const slides = slider.querySelectorAll('.slide');
-  const counter = slider.querySelector('.slider-counter');
+  const counter = slider.nextElementSibling?.classList.contains('slider-counter') ? slider.nextElementSibling : null;
   const total = slides.length;
   let current = 0;
   function update() {
