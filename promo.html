@@ -281,10 +281,13 @@ footer {
   .work-item:first-child { padding-top: 20px; }
   .work-item-title { font-size: 16px; }
 
-  .slider-outer { margin-left: -28px; margin-right: -28px; padding: 0 28px; }
-  .slider-btn { width: 28px; height: 28px; }
+  .slider-outer { margin-left: 0; margin-right: 0; padding: 0 40px; }
+  .slider-btn { width: 32px; height: 32px; }
   .slider-btn.prev { left: 2px; }
   .slider-btn.next { right: 2px; }
+  .work-item-title { margin-bottom: 12px; }
+  .slide-caption { margin-top: 3px; }
+  .slider-wrap { margin-bottom: 8px; }
 
   .work-item-meta { flex-direction: column; gap: 6px; }
 
@@ -742,6 +745,17 @@ document.querySelectorAll('[data-slider]').forEach(slider => {
   nextBtn.addEventListener('click', () => { if (current < total - 1) { current++; update(); } });
 
   update();
+
+  // スワイプ対応
+  let startX = 0;
+  trackOuter.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  trackOuter.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0 && current < total - 1) { current++; update(); }
+      if (diff < 0 && current > 0) { current--; update(); }
+    }
+  });
 });
 
 // Password Gate
